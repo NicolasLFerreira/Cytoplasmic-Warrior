@@ -162,23 +162,18 @@ func skill():
 	# Spray
 	
 	if (key("spray")):
-		pass;
-	else:
-		pass;
+		pass
+	
+	# Teleport
+	
+	if (Input.is_action_just_pressed("teleport")):
+		self.position.x += movement_speed * dash_factor / 5;
 	
 	# Regen
 	
 	if (power < power_cap and $PowerRegenTimer.is_stopped()):
 		$PowerRegenTimer.start();
 	
-	# Test
-	
-	if (Input.is_action_just_pressed("click_l")):
-		pos = get_local_mouse_position();
-	
-	if (Input.is_action_just_pressed("teleport")):
-		vector += pos;
-		vector += pos;
 
 # Timer functions
 
