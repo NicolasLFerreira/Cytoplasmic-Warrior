@@ -138,7 +138,6 @@ func skill():
 	
 	if (Input.is_action_just_pressed("dash") and power >= 30):
 		vector.x = movement_speed * dash_factor;
-		#self.position += Vector2(100, 0); This works like a teleport.
 		power -= 30;
 	
 	# Air Jump
