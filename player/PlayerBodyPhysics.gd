@@ -12,6 +12,7 @@ export var die = true;
 const movement_speed_base = 50;
 var movement_speed = movement_speed_base;
 var speed_jump = -300;
+var sneak_factor = 3;
 
 # Stamina variables
 
@@ -56,7 +57,14 @@ func _physics_process(_delta):
 	else:
 		vector.x = lerp(vector.x, 0, 0.25)
 	
-	#Physics dependent functions
+	# Walking animation
+	
+	if (!key("walk_left") and !key("walk_right")):
+		$PlayerSprite.play("idle");
+	else:
+		$PlayerSprite.play("moving");
+	
+	# Physics dependent functions
 	
 	movement();
 	skill();
@@ -94,7 +102,6 @@ func movement():
 	
 	if (key("jump") and is_on_floor()):
 		vector.y = speed_jump;
-	
 
 # Stamina
 
@@ -122,15 +129,20 @@ func stamina():
 		if ($StaminaCostTimer.time_left == 0):
 			$StaminaCostTimer.start();
 			$StaminaRegenTimer.stop();
+			$PlayerSprite.get_sprite_frames().set_animation_speed("moving", 8.0);
+	# Sneaking
 	else:
-		movement_speed = movement_speed_base;
+		if (key("sneak")):
+			movement_speed = movement_speed_base / sneak_factor;
+			$PlayerSprite.get_sprite_frames().set_animation_speed("moving", 2.0);
+		else:
+			movement_speed = movement_speed_base;
+			$PlayerSprite.get_sprite_frames().set_animation_speed("moving", 4.0);
 		$StaminaCostTimer.stop();
 	if (stamina < stamina_cap and $StaminaRegenTimer.time_left == 0 and !key("sprint")):
 		$StaminaRegenTimer.start();
 
 # Dash, air jump, dodge and spray function
-
-var pos = Vector2();
 
 func skill():
 	
