@@ -11,7 +11,7 @@ export var die = true;
 
 const movement_speed_base = 50;
 var movement_speed = movement_speed_base;
-var speed_jump = -300;
+var speed_jump = -250;
 var sneak_factor = 3;
 
 # Stamina variables
@@ -31,11 +31,21 @@ var power = 100;
 const base_factor = 15;
 var dash_factor = 15;
 
+# Dev & Jokes
+
+var god_mode = false;
+
 func _process(delta):
 	
 	# Debug label
 	
 	$GUI.text = "Stamina: " + str(stamina) + "\nTimer: " + str($StaminaCostTimer.time_left) + "\nTimer: " + str($StaminaRegenTimer.time_left) + "\nPower: " + str(power);
+	
+	# Dev tools
+	
+	if (key("G")):
+		god_mode = !god_mode;
+	
 
 func _physics_process(_delta):
 	
@@ -49,7 +59,8 @@ func _physics_process(_delta):
 		
 		# Gravity
 		
-		vector.y += gravity;
+		if (!god_mode):
+			vector.y += gravity;
 		
 		# Inertia
 		
@@ -154,7 +165,7 @@ func skill():
 	
 	# Air Jump
 	
-	if (Input.is_action_just_pressed("air_jump") and power >= 50):
+	if (Input.is_action_just_pressed("air_jump") and power >= 50 and !is_on_floor()):
 		vector.y = speed_jump;
 		power -= 50;
 	
@@ -179,6 +190,13 @@ func skill():
 	
 	if (Input.is_action_just_pressed("teleport")):
 		self.position.x += movement_speed * dash_factor / 5;
+	
+	# Power conversion
+	
+	if (Input.is_action_just_pressed("convert")):
+		stamina = power / 2;
+		tired = false;
+		power = 0;
 	
 	# Regen
 	
