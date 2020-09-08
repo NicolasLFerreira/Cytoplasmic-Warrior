@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/player/bullet.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="BulletPhysicsBody" type="KinematicBody2D"]
+
+[node name="BulletCollision" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.95, 0.55 )
+shape = SubResource( 1 )
+
+[node name="BulletSprite" type="Sprite" parent="."]
+scale = Vector2( 2.8, 2.8 )
+texture = ExtResource( 1 )
