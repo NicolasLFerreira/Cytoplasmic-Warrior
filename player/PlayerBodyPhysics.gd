@@ -9,9 +9,9 @@ export var die = true;
 
 # Movement variables
 
-const movement_speed_base = 50;
+const movement_speed_base = 45;
 var movement_speed = movement_speed_base;
-var speed_jump = -300;
+var speed_jump = -250;
 var sneak_factor = 3;
 
 # Stamina variables
