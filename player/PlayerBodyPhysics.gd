@@ -2,8 +2,7 @@ extends KinematicBody2D
 
 # Physics constants
 
-const base_gravity = 1;
-var gravity = base_gravity;
+const gravity = 10;
 var vector = Vector2(0, 1);
 
 export var die = true;
@@ -38,8 +37,6 @@ var god_mode = false;
 var god_speed = 250;
 
 func _process(delta):
-	
-	print(str(vector.y))
 	
 	# Debug label
 	
@@ -84,8 +81,7 @@ func _physics_process(_delta):
 		# Gravity
 		
 		if (!god_mode):
-			vector.y = gravity;
-			gravity = 1.2 * (gravity);
+			vector.y += gravity;
 		else:
 			vector.y = 0;
 		
@@ -94,7 +90,6 @@ func _physics_process(_delta):
 		vector.x = lerp(vector.x, 0, 0.03)
 	else:
 		vector.x = lerp(vector.x, 0, 0.25)
-		gravity = base_gravity;
 	
 	# Walking animation
 	
@@ -231,6 +226,13 @@ func skill():
 	if (power < power_cap and $PowerRegenTimer.is_stopped()):
 		$PowerRegenTimer.start();
 	
+
+# Shooting
+
+func _shoot():
+	
+	if (Input.is_action_just_pressed("shoot")):
+		pass
 
 # Timer functions
 
