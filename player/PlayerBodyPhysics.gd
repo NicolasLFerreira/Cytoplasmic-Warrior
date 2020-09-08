@@ -2,7 +2,8 @@ extends KinematicBody2D
 
 # Physics constants
 
-const gravity = 10;
+const base_gravity = 1;
+var gravity = base_gravity;
 var vector = Vector2(0, 1);
 
 export var die = true;
@@ -11,7 +12,7 @@ export var die = true;
 
 const movement_speed_base = 50;
 var movement_speed = movement_speed_base;
-var speed_jump = -250;
+var speed_jump = -300;
 var sneak_factor = 3;
 
 # Stamina variables
@@ -34,8 +35,11 @@ var dash_factor = 15;
 # Dev & Jokes
 
 var god_mode = false;
+var god_speed = 250;
 
 func _process(delta):
+	
+	print(str(vector.y))
 	
 	# Debug label
 	
@@ -43,9 +47,29 @@ func _process(delta):
 	
 	# Dev tools
 	
-	if (key("G")):
+	if (Input.is_action_just_pressed("G")):
 		god_mode = !god_mode;
 	
+	# God mode
+	
+	if (god_mode):
+		
+		# Up down fly
+		
+		if (key("up")):
+			vector.y -= god_speed;
+		
+		if (key("down")):
+			vector.y += god_speed;
+		
+		# Unlimited stuff
+		
+		power = power_cap;
+		
+		stamina = stamina_cap;
+		
+		# 0 gravity
+		
 
 func _physics_process(_delta):
 	
@@ -60,13 +84,17 @@ func _physics_process(_delta):
 		# Gravity
 		
 		if (!god_mode):
-			vector.y += gravity;
+			vector.y = gravity;
+			gravity = 1.2 * (gravity);
+		else:
+			vector.y = 0;
 		
 		# Inertia
 		
 		vector.x = lerp(vector.x, 0, 0.03)
 	else:
 		vector.x = lerp(vector.x, 0, 0.25)
+		gravity = base_gravity;
 	
 	# Walking animation
 	
