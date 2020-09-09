@@ -11,7 +11,7 @@ export var die = true;
 
 const movement_speed_base = 45;
 var movement_speed = movement_speed_base;
-var speed_jump = -250;
+var speed_jump = -300;
 var sneak_factor = 3;
 
 # Stamina variables
@@ -89,7 +89,7 @@ func _physics_process(_delta):
 		
 		vector.x = lerp(vector.x, 0, 0.03)
 	else:
-		vector.x = lerp(vector.x, 0, 0.25)
+		vector.x = lerp(vector.x, 0, 0.35)
 	
 	# Walking animation
 	
