@@ -29,7 +29,7 @@ var power_regen = 10;
 var power = 100;
 
 const base_factor = 15;
-var dash_factor = 15;
+var dash_factor = 30;
 
 # Dev & Jokes
 
@@ -39,8 +39,6 @@ var god_speed = 250;
 func _process(delta):
 	
 	# Debug label
-	
-	$GUI.text = "Stamina: " + str(stamina) + "\nTimer: " + str($StaminaCostTimer.time_left) + "\nTimer: " + str($StaminaRegenTimer.time_left) + "\nPower: " + str(power);
 	
 	# Dev tools
 	
@@ -89,7 +87,7 @@ func _physics_process(_delta):
 		
 		vector.x = lerp(vector.x, 0, 0.03)
 	else:
-		vector.x = lerp(vector.x, 0, 0.35)
+		vector.x = lerp(vector.x, 0, 0.3)
 	
 	# Walking animation
 	
@@ -163,15 +161,15 @@ func stamina():
 		if ($StaminaCostTimer.time_left == 0):
 			$StaminaCostTimer.start();
 			$StaminaRegenTimer.stop();
-			$PlayerSprite.get_sprite_frames().set_animation_speed("moving", 8.0);
+			$PlayerSprite.get_sprite_frames().set_animation_speed("moving", 9.0);
 	# Sneaking
 	else:
 		if (key("sneak")):
 			movement_speed = movement_speed_base / sneak_factor;
-			$PlayerSprite.get_sprite_frames().set_animation_speed("moving", 2.0);
+			$PlayerSprite.get_sprite_frames().set_animation_speed("moving", 3.0);
 		else:
 			movement_speed = movement_speed_base;
-			$PlayerSprite.get_sprite_frames().set_animation_speed("moving", 4.0);
+			$PlayerSprite.get_sprite_frames().set_animation_speed("moving", 6.0);
 		$StaminaCostTimer.stop();
 	if (stamina < stamina_cap and $StaminaRegenTimer.time_left == 0 and !key("sprint")):
 		$StaminaRegenTimer.start();
@@ -188,9 +186,9 @@ func skill():
 	
 	# Air Jump
 	
-	if (Input.is_action_just_pressed("air_jump") and power >= 50 and !is_on_floor()):
+	if (Input.is_action_just_pressed("air_jump") and power >= 40 and !is_on_floor()):
 		vector.y = speed_jump;
-		power -= 50;
+		power -= 40;
 	
 	# Dodge
 	
