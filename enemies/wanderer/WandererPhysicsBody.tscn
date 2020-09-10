@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://enemies/base/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/enemies/wanderer/wanderer_2.png" type="Texture" id=2]
+[ext_resource path="res://textures/enemies/wanderer/wanderer_1.png" type="Texture" id=3]
+[ext_resource path="res://textures/enemies/wanderer/wanderer_3.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "moving",
+"speed": 20.0
+} ]
+
+[node name="WandererPhysicsBody" instance=ExtResource( 1 )]
+scale = Vector2( 3, 3 )
+movement_speed = 140
+
+[node name="ExclamationMark" parent="." index="0"]
+position = Vector2( 0, -10 )
+
+[node name="EnemyBodySprite" parent="." index="1"]
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="EnemyBodyCollision" parent="." index="2"]
+position = Vector2( 0.5, 0 )
+scale = Vector2( 0.25, 0.4 )
+
+[node name="KillCollision" parent="KillArea" index="0"]
+position = Vector2( 0.25, 0 )
+scale = Vector2( 0.3, 0.45 )
+
+[node name="FinderCollision" parent="FinderArea" index="0"]
+scale = Vector2( 3, 3 )

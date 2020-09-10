@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://enemies/base/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/enemies/crawler/crawler_4.png" type="Texture" id=2]
+[ext_resource path="res://textures/enemies/crawler/crawler_1.png" type="Texture" id=3]
+[ext_resource path="res://textures/enemies/crawler/crawler_3.png" type="Texture" id=4]
+[ext_resource path="res://textures/enemies/crawler/crawler_2.png" type="Texture" id=5]
+[ext_resource path="res://textures/enemies/crawler/crawler_5.png" type="Texture" id=6]
+[ext_resource path="res://textures/enemies/crawler/crawler_6.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "moving",
+"speed": 10.0
+} ]
+
+[node name="CrawlerPhysicsBody" instance=ExtResource( 1 )]
+scale = Vector2( 3, 3 )
+movement_speed = 75
+
+[node name="ExclamationMark" parent="." index="0"]
+position = Vector2( 0, -8 )
+
+[node name="EnemyBodySprite" parent="." index="1"]
+frames = SubResource( 1 )
+animation = "moving"
+frame = 3
+playing = true
+
+[node name="EnemyBodyCollision" parent="." index="2"]
+position = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.45, 0.35 )
+
+[node name="KillCollision" parent="KillArea" index="0"]
+position = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.5, 0.4 )
+
+[node name="FinderCollision" parent="FinderArea" index="0"]
+scale = Vector2( 7, 7 )
