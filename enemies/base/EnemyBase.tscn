@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://enemies/base/KillArea.gd" type="Script" id=1]
 [ext_resource path="res://enemies/base/EnemyBaseMovement.gd" type="Script" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://textures/ui_items/exclamation_mark/exclamation_mark_15.png" type="Texture" id=14]
 [ext_resource path="res://textures/ui_items/exclamation_mark/exclamation_mark_10.png" type="Texture" id=15]
 [ext_resource path="res://textures/ui_items/exclamation_mark/exclamation_mark_8.png" type="Texture" id=16]
+[ext_resource path="res://textures/enemies/tsn-1/tsn1_2.png" type="Texture" id=17]
+[ext_resource path="res://textures/enemies/tsn-1/tsn1_3.png" type="Texture" id=18]
+[ext_resource path="res://textures/enemies/tsn-1/tsn1_1.png" type="Texture" id=19]
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -26,7 +29,17 @@ animations = [ {
 } ]
 
 [sub_resource type="SpriteFrames" id=1]
-animations = [  ]
+animations = [ {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "moving",
+"speed": 4.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=2]
 
