@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/fonts/Upheavtt.tres" type="DynamicFont" id=1]
+
+[node name="BigLabel" type="Label"]
+margin_right = 964.0
+margin_bottom = 147.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 7
+custom_constants/shadow_offset_y = 7
+text = "this is a test message
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
