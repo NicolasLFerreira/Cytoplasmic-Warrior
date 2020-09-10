@@ -24,20 +24,22 @@ scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
 movement_speed = 100
 
-[node name="EnemyBodySprite" parent="." index="0"]
+[node name="ExclamationMark" parent="." index="0"]
+position = Vector2( 0, -12 )
+
+[node name="EnemyBodySprite" parent="." index="1"]
 frames = SubResource( 1 )
-animation = "default"
 playing = true
 
-[node name="EnemyBodyCollision" parent="." index="1"]
+[node name="EnemyBodyCollision" parent="." index="2"]
 scale = Vector2( 0.3, 0.6 )
 
-[node name="KillArea" parent="." index="2"]
+[node name="KillArea" parent="." index="3"]
 scale = Vector2( 0.4, 0.7 )
-
-[node name="FinderCollision" parent="FinderArea" index="0"]
-scale = Vector2( 3, 3 )
 
 [node name="Timer" type="Timer" parent="." index="4"]
 wait_time = 2.0
+
+[node name="FinderCollision" parent="FinderArea" index="0"]
+scale = Vector2( 6, 6 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
