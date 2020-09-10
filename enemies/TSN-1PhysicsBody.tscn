@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://enemies/base/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/enemies/tsn-1/tsn1_2.png" type="Texture" id=2]
+[ext_resource path="res://textures/enemies/tsn-1/tsn1_3.png" type="Texture" id=3]
+[ext_resource path="res://textures/enemies/tsn-1/tsn1_1.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "moving",
+"speed": 5.0
+} ]
 
 [node name="TSN-1PhysicsBody" instance=ExtResource( 1 )]
 position = Vector2( 0.101322, 0.0675449 )
@@ -11,19 +27,16 @@ position = Vector2( 0, -8 )
 
 [node name="EnemyBodySprite" parent="." index="1"]
 position = Vector2( 0.270203, -0.540371 )
+frames = SubResource( 1 )
 animation = "idle"
 
 [node name="EnemyBodyCollision" parent="." index="2"]
 position = Vector2( 0.25, -0.55 )
 scale = Vector2( 0.7, 0.3 )
 
-[node name="KillArea" parent="." index="3"]
-visible = false
-
 [node name="KillCollision" parent="KillArea" index="0"]
 position = Vector2( 0.25, 0 )
 scale = Vector2( 0.75, 0.4 )
 
 [node name="FinderCollision" parent="FinderArea" index="0"]
-visible = false
 scale = Vector2( 7, 7 )

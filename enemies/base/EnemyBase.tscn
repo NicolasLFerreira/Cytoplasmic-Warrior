@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://enemies/base/KillArea.gd" type="Script" id=1]
 [ext_resource path="res://enemies/base/EnemyBaseMovement.gd" type="Script" id=2]
@@ -16,29 +16,13 @@
 [ext_resource path="res://textures/ui_items/exclamation_mark/exclamation_mark_15.png" type="Texture" id=14]
 [ext_resource path="res://textures/ui_items/exclamation_mark/exclamation_mark_10.png" type="Texture" id=15]
 [ext_resource path="res://textures/ui_items/exclamation_mark/exclamation_mark_8.png" type="Texture" id=16]
-[ext_resource path="res://textures/enemies/tsn-1/tsn1_2.png" type="Texture" id=17]
-[ext_resource path="res://textures/enemies/tsn-1/tsn1_3.png" type="Texture" id=18]
-[ext_resource path="res://textures/enemies/tsn-1/tsn1_1.png" type="Texture" id=19]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ null, ExtResource( 4 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": false,
 "name": "default",
 "speed": 39.0
-} ]
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "moving",
-"speed": 4.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -53,12 +37,9 @@ script = ExtResource( 2 )
 [node name="ExclamationMark" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -20 )
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 5 )
-frame = 14
-playing = true
+frames = SubResource( 1 )
 
 [node name="EnemyBodySprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
 
 [node name="EnemyBodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

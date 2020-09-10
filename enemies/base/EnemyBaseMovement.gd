@@ -29,7 +29,7 @@ func _physics_process(delta):
 	
 	# Movement
 	
-	if (inside and !cooldown):
+	if (inside):
 		if (obj.global_position.x - global_position.x > 0):
 			vector.x = max(vector.x-movement_speed, movement_speed * factor);
 			$EnemyBodySprite.flip_h = true;
