@@ -28,6 +28,7 @@ var power = 100;
 
 const base_factor = 15;
 var dash_factor = 30;
+const projectile = preload("res://player/projectile/ProjectileBody.tscn");
 
 # Death
 
@@ -71,6 +72,7 @@ func _physics_process(_delta):
 	movement();
 	skill();
 	stamina();
+	shoot();
 	die();
 	
 	# Movement and ground definition
@@ -173,7 +175,7 @@ func stamina():
 	if (stamina < stamina_cap and $StaminaRegenTimer.time_left == 0 and !key("sprint")):
 		$StaminaRegenTimer.start();
 
-# Function for every skill that the player has
+# Function for every skill that the player has + shooting system
 
 func skill():
 	
@@ -223,10 +225,21 @@ func skill():
 
 # Shooting
 
-func _shoot():
+func shoot():
 	
-	if (Input.is_action_just_pressed("shoot")):
-		pass
+	if (Input.is_action_just_pressed("shoot") and $ReloadProjectileTimer.get_time_left() == 0 and power >= 10):
+		power -= 10;
+		$ReloadProjectileTimer.start();
+		
+		var projectile_instance = projectile.instance();
+		
+		add_child(projectile_instance);
+		
+		projectile_instance.global_position = global_position;
+		projectile_instance.direction = -1 if $PlayerSprite.flip_h else 1;
+		projectile_instance.flip = true if $PlayerSprite.flip_h else false;
+		projectile_instance.isHorizontal = true;
+
 
 # Death
 
