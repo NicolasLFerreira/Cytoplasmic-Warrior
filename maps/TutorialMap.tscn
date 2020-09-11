@@ -37,46 +37,44 @@ margin_top = -128.0
 margin_right = 2314.89
 margin_bottom = 169.0
 text = "going too slow? 
-press 'shift' to run faster! 
-Just be aware that is costs stamina,
-and it can also get you a litte \"tired\""
+press 'shift' to run faster!
+(at the cost of stamina)"
 
 [node name="Jump" parent="Tutorial" index="3" instance=ExtResource( 3 )]
-margin_left = 1622.34
-margin_top = -139.219
-margin_right = 2822.34
-margin_bottom = 7.78116
-text = "well well... first obstacle!
-try pressing 'space' to jump"
+margin_left = 1427.62
+margin_top = -128.244
+margin_right = 2627.62
+margin_bottom = 18.7564
+text = "well well, first obstacle!
+press 'space' to jump!"
 
 [node name="Sneak" parent="Tutorial" index="4" instance=ExtResource( 3 )]
-margin_left = 2809.17
-margin_top = -66.9404
-margin_right = 3893.17
-margin_bottom = 155.06
-text = "going too fast? 
-press 'ctrl' to 
+margin_left = 2796.13
+margin_top = -86.3194
+margin_right = 3880.13
+margin_bottom = 210.681
+text = "going too fast?
+press 'ctrl' to
 slow down!"
 
 [node name="Dash" parent="Tutorial" index="5" instance=ExtResource( 3 )]
-margin_left = 2323.43
-margin_top = -312.37
-margin_right = 3399.43
-margin_bottom = 59.6302
-text = "if running isn't enough,
-press 'j' to dash forward,
-at the cost of 30 power.
-Walking while doing so 
-will reduce the dash"
+margin_left = 2317.66
+margin_top = -298.056
+margin_right = 3545.66
+margin_bottom = -76.0558
+text = "if running isn't fast enough,
+press 'j' to dash forward, at
+the cost of 30 power!"
 
 [node name="AirJump" parent="Tutorial" index="6" instance=ExtResource( 3 )]
-margin_left = 3509.14
+margin_left = 3505.51
 margin_top = -442.544
-margin_right = 4569.14
-margin_bottom = -220.544
-text = "if jumping isn't enough,
+margin_right = 4565.51
+margin_bottom = -145.544
+text = "jump is way too low?
 press 'k' while in midair
-for an extra jump."
+for an extra jump at the
+cost of 40 power!"
 
 [node name="Dodge" parent="Tutorial" index="7" instance=ExtResource( 3 )]
 margin_left = 4052.01
@@ -85,7 +83,7 @@ margin_right = 5944.01
 margin_bottom = -333.216
 text = "be aware of the stalagmite, they are spiky!
 if you find yourself falling on them, press
-'n' to avoid dying for 70 power!"
+'n' to avoid dying at the cost of 60 power!"
 
 [node name="Crawler" parent="Tutorial" index="8" instance=ExtResource( 3 )]
 margin_left = 5375.0
@@ -104,8 +102,5 @@ tile_data = PoolIntArray( -2555634, 0, 0, -2555633, 0, 1, -2555632, 0, 1, -25556
 [node name="DeadlyObjectsTileSet" parent="." index="2"]
 tile_data = PoolIntArray( -1507088, 0, 0, -1507087, 0, 0, -1507086, 0, 0, -1507082, 0, 0, -1507081, 0, 0, -1113899, 0, 1, -1113898, 0, 1, -1113897, 0, 65537, -1113896, 0, 0, -1113895, 0, 1, -1113894, 0, 1, -1113893, 0, 0, -1113892, 0, 65537, -1113891, 0, 0, -1113890, 0, 65536, -1113885, 0, 1, -1113884, 0, 0, -1113883, 0, 0, -1113882, 0, 65537, -1113881, 0, 1, -1113880, 0, 65536, -1113879, 0, 65537, -1113878, 0, 0, -1113877, 0, 0, -1113876, 0, 65537 )
 
-[node name="PlayerBodyPhysics" parent="." index="3"]
-position = Vector2( 5497.86, -473.153 )
-
 [node name="CrawlerPhysicsBody" parent="." index="4" instance=ExtResource( 4 )]
-position = Vector2( 5743, -422.467 )
+position = Vector2( 5740.88, -411.138 )
