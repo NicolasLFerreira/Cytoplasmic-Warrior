@@ -5,6 +5,7 @@
 [node name="BigLabel" type="Label"]
 margin_right = 964.0
 margin_bottom = 147.0
+rect_scale = Vector2( 0.6, 0.6 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
