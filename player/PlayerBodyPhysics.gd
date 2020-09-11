@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 # Physics constants
 
-const gravity = 10;
+const gravity = 5;
 var vector = Vector2(0, 1);
 
 export var die = true;
@@ -60,13 +60,22 @@ func _process(delta):
 		# Unlimited stuff
 		
 		power = power_cap;
-		
 		stamina = stamina_cap;
 		
-		# 0 gravity
+		# Immortality
 		
+		die = false;
+	else:
+		die = true;
+	
 
 func _physics_process(_delta):
+	
+	# Physics dependent functions
+	
+	movement();
+	skill();
+	stamina();
 	
 	# Movement and ground definition
 	
@@ -80,14 +89,15 @@ func _physics_process(_delta):
 		
 		if (!god_mode):
 			vector.y += gravity;
+			vector.y += gravity;
 		else:
 			vector.y = 0;
 		
 		# Inertia
 		
-		vector.x = lerp(vector.x, 0, 0.03)
+		vector.x = lerp(vector.x, 0, 0.03);
 	else:
-		vector.x = lerp(vector.x, 0, 0.3)
+		vector.x = lerp(vector.x, 0, 0.3);
 	
 	# Walking animation
 	
@@ -95,12 +105,6 @@ func _physics_process(_delta):
 		$PlayerSprite.play("idle");
 	else:
 		$PlayerSprite.play("moving");
-	
-	# Physics dependent functions
-	
-	movement();
-	skill();
-	stamina();
 	
 
 # Shortner
