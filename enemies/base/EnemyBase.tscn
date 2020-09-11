@@ -53,5 +53,6 @@ visible = false
 
 [node name="FinderCollision" type="CollisionShape2D" parent="FinderArea"]
 shape = SubResource( 4 )
+[connection signal="body_entered" from="HitArea" to="." method="_on_tileset_hit"]
 [connection signal="body_entered" from="FinderArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="FinderArea" to="." method="_on_body_exited"]

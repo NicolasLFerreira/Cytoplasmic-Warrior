@@ -4,11 +4,13 @@ extends KinematicBody2D
 
 var vector = Vector2();
 var gravity = 10;
+var jump = false;
 
 # Movement
 
 var factor = 3;
 export var movement_speed = 50;
+export var jump_speed = -200;
 
 var cooldown = false;
 
@@ -37,6 +39,12 @@ func _physics_process(delta):
 			vector.x = min(vector.x+movement_speed, -movement_speed * factor);
 			$EnemyBodySprite.flip_h = false;
 	
+	# Jump
+	
+	if (jump):
+		vector.y += -jump_speed;
+		jump = false;
+		print("cu")
 
 # Called when player enters area
 
@@ -66,3 +74,8 @@ func _on_body_exited(body):
 		
 		$EnemyBodySprite.play("idle");
 		$ExclamationMark.play("default", true);
+		
+
+func _on_tileset_hit(body):
+	if (body.get_name() == "GroundTileSet" and is_on_floor()):
+		jump = true;
