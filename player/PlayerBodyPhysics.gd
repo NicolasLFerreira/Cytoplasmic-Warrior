@@ -45,6 +45,7 @@ func _process(delta):
 	
 	if (Input.is_action_just_pressed("G")):
 		god_mode = !god_mode;
+		mortal = !mortal;
 	
 	# God mode
 	
@@ -190,12 +191,12 @@ func skill():
 	
 	# Dodge
 	
-	if (Input.is_action_just_pressed("dodge") and power >= 70):
+	if (Input.is_action_just_pressed("dodge") and power >= 60):
 		$DodgeTimer.start();
 		if ($DodgeTimer.time_left != 0):
 			mortal = false;
 			$PlayerSprite.flip_v = true;
-		power -= 70
+		power -= 60
 	
 	# Spray
 	
