@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://textures/player/main_character_4.png" type="Texture" id=1]
 [ext_resource path="res://player/PlayerBodyPhysics.gd" type="Script" id=2]
 [ext_resource path="res://textures/player/main_character_1.png" type="Texture" id=3]
-[ext_resource path="res://player/DeathArea.gd" type="Script" id=4]
 [ext_resource path="res://textures/player/main_character_2.png" type="Texture" id=5]
 [ext_resource path="res://ui/labels/SmallLabel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://player/GUI.gd" type="Script" id=7]
@@ -71,7 +70,6 @@ zoom = Vector2( 0.3, 0.3 )
 smoothing_speed = 6.0
 
 [node name="DeathArea" type="Area2D" parent="."]
-script = ExtResource( 4 )
 
 [node name="DeathCollision" type="CollisionShape2D" parent="DeathArea"]
 scale = Vector2( 0.65, 1.05 )
@@ -87,9 +85,13 @@ wait_time = 0.3
 one_shot = true
 
 [node name="DodgeTimer" type="Timer" parent="."]
-wait_time = 0.5
+process_mode = 0
 one_shot = true
-[connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_deadlyobject_entered"]
+[connection signal="area_entered" from="DeathArea" to="." method="_on_enemy_enter"]
+[connection signal="area_exited" from="DeathArea" to="." method="_on_enemy_exit"]
+[connection signal="body_entered" from="DeathArea" to="." method="_on_deadlyobject_enter"]
+[connection signal="body_exited" from="DeathArea" to="." method="_on_deadlyobject_exit"]
 [connection signal="timeout" from="StaminaCostTimer" to="." method="_stamina_cost_timer"]
 [connection signal="timeout" from="StaminaRegenTimer" to="." method="_stamina_regen_timer"]
 [connection signal="timeout" from="PowerRegenTimer" to="." method="_power_regen_timer"]
+[connection signal="timeout" from="DodgeTimer" to="." method="_dodge_end_timer"]

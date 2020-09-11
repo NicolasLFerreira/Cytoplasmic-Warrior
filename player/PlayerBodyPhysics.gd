@@ -5,8 +5,6 @@ extends KinematicBody2D
 const gravity = 5;
 var vector = Vector2(0, 1);
 
-export var die = true;
-
 # Movement variables
 
 const movement_speed_base = 45;
@@ -31,14 +29,17 @@ var power = 100;
 const base_factor = 15;
 var dash_factor = 30;
 
+# Death
+
+var mortal = true;
+var die = false;
+
 # Dev & Jokes
 
 var god_mode = false;
 var god_speed = 250;
 
 func _process(delta):
-	
-	# Debug label
 	
 	# Dev tools
 	
@@ -61,13 +62,6 @@ func _process(delta):
 		
 		power = power_cap;
 		stamina = stamina_cap;
-		
-		# Immortality
-		
-		die = false;
-	else:
-		die = true;
-	
 
 func _physics_process(_delta):
 	
@@ -76,6 +70,7 @@ func _physics_process(_delta):
 	movement();
 	skill();
 	stamina();
+	die();
 	
 	# Movement and ground definition
 	
@@ -159,7 +154,6 @@ func stamina():
 	
 	# Running
 	
-	
 	if (!tired and key("sprint") and (key("walk_right") or key("walk_left"))):
 		movement_speed = movement_speed_base * 2;
 		if ($StaminaCostTimer.time_left == 0):
@@ -178,7 +172,7 @@ func stamina():
 	if (stamina < stamina_cap and $StaminaRegenTimer.time_left == 0 and !key("sprint")):
 		$StaminaRegenTimer.start();
 
-# Dash, air jump, dodge and spray function
+# Function for every skill that the player has
 
 func skill():
 	
@@ -196,15 +190,12 @@ func skill():
 	
 	# Dodge
 	
-	if (Input.is_action_just_pressed("dodge")):
+	if (Input.is_action_just_pressed("dodge") and power >= 70):
 		$DodgeTimer.start();
 		if ($DodgeTimer.time_left != 0):
-			die = false;
+			mortal = false;
 			$PlayerSprite.flip_v = true;
 		power -= 70
-	if ($DodgeTimer.time_left == 0):
-		die = true;
-		$PlayerSprite.flip_v = false;
 	
 	# Spray
 	
@@ -236,6 +227,29 @@ func _shoot():
 	if (Input.is_action_just_pressed("shoot")):
 		pass
 
+# Death
+
+func _on_deadlyobject_enter(body):
+	if (body.get_name() == "DeadlyObjectsTileSet"):
+		die = true;
+
+func _on_deadlyobject_exit(body):
+	if (body.get_name() == "DeadlyObjectsTileSet"):
+		die = false;
+
+func _on_enemy_enter(area):
+	if (area.get_name() == "HitArea"):
+		die = true;
+
+func _on_enemy_exit(area):
+	if (area.get_name() == "HitArea"):
+		die = false;
+
+func die():
+	#print(str(die))
+	if (die and mortal):
+		get_tree().reload_current_scene();
+
 # Timer functions
 
 func _stamina_cost_timer():
@@ -246,3 +260,7 @@ func _stamina_regen_timer():
 
 func _power_regen_timer():
 	power += power_regen;
+
+func _dodge_end_timer():
+	mortal = true;
+	$PlayerSprite.flip_v = false;
