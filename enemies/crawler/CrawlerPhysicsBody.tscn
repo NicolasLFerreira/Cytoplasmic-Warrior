@@ -30,16 +30,19 @@ position = Vector2( 0, -8 )
 
 [node name="EnemyBodySprite" parent="." index="1"]
 frames = SubResource( 1 )
-animation = "moving"
+animation = "idle"
 playing = true
 
 [node name="EnemyBodyCollision" parent="." index="2"]
 position = Vector2( 0.5, 0.5 )
 scale = Vector2( 0.45, 0.35 )
 
-[node name="KillCollision" parent="KillArea" index="0"]
+[node name="HitCollision" parent="HitArea" index="0"]
 position = Vector2( 0.5, 0.5 )
-scale = Vector2( 0.5, 0.4 )
+scale = Vector2( 0.5, 0.45 )
+
+[node name="FinderArea" parent="." index="4"]
+visible = true
 
 [node name="FinderCollision" parent="FinderArea" index="0"]
 scale = Vector2( 7, 7 )
