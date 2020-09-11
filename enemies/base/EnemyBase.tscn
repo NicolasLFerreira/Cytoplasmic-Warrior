@@ -51,6 +51,7 @@ script = ExtResource( 1 )
 shape = SubResource( 3 )
 
 [node name="FinderArea" type="Area2D" parent="."]
+visible = false
 
 [node name="FinderCollision" type="CollisionShape2D" parent="FinderArea"]
 shape = SubResource( 4 )
