@@ -10,7 +10,7 @@ var jump = false;
 
 var factor = 3;
 export var movement_speed = 50;
-export var jump_speed = -200;
+export var jump_speed = -350;
 
 var cooldown = false;
 
@@ -41,10 +41,8 @@ func _physics_process(delta):
 	
 	# Jump
 	
-	if (jump):
-		vector.y += -jump_speed;
-		jump = false;
-		print("cu")
+	if (jump and is_on_floor()):
+		vector.y += jump_speed;
 
 # Called when player enters area
 
@@ -76,6 +74,9 @@ func _on_body_exited(body):
 		$ExclamationMark.play("default", true);
 		
 
-func _on_tileset_hit(body):
-	if (body.get_name() == "GroundTileSet" and is_on_floor()):
+func _on_tileset_enter(body):
+	if (body.get_name() == "TileSet"):
 		jump = true;
+
+func _on_tileset_exited(body):
+	jump = false;

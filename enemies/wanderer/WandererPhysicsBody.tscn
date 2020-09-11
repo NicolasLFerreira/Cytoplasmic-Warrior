@@ -33,6 +33,10 @@ animation = "idle"
 position = Vector2( 0.5, 0 )
 scale = Vector2( 0.25, 0.4 )
 
+[node name="KillCollision" parent="KillArea" index="0"]
+position = Vector2( 0.25, 0 )
+scale = Vector2( 0.3, 0.45 )
+
 [node name="FinderArea" parent="." index="4"]
 visible = true
 

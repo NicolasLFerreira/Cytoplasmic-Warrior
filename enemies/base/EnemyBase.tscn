@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://enemies/base/EnemyBaseMovement.gd" type="Script" id=2]
 [ext_resource path="res://textures/ui_items/exclamation_mark/exclamation_mark_2.png" type="Texture" id=3]
@@ -30,6 +30,8 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=4]
 
+[sub_resource type="RectangleShape2D" id=5]
+
 [node name="EnemyMonsterBase" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -53,6 +55,11 @@ visible = false
 
 [node name="FinderCollision" type="CollisionShape2D" parent="FinderArea"]
 shape = SubResource( 4 )
+
+[node name="JumpArea" type="Area2D" parent="."]
+
+[node name="JumpCollision" type="CollisionShape2D" parent="JumpArea"]
+shape = SubResource( 5 )
 [connection signal="body_entered" from="HitArea" to="." method="_on_tileset_hit"]
 [connection signal="body_entered" from="FinderArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="FinderArea" to="." method="_on_body_exited"]
