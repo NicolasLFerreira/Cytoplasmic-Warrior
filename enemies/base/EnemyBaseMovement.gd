@@ -5,6 +5,7 @@ extends KinematicBody2D
 var vector = Vector2();
 var gravity = 10;
 var jump = false;
+var killable = true;
 
 # Movement
 

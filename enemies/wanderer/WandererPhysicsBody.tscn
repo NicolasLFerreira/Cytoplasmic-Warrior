@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://enemies/base/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://enemies/enemies/wanderer/wanderer_2.png" type="Texture" id=2]
 [ext_resource path="res://enemies/enemies/wanderer/wanderer_1.png" type="Texture" id=3]
 [ext_resource path="res://enemies/enemies/wanderer/wanderer_3.png" type="Texture" id=4]
-
+[ext_resource path="res://enemies/wanderer/WandererPhysicsBody.gd" type="Script" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -19,9 +19,13 @@ animations = [ {
 "speed": 20.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=2]
+
 [node name="WandererPhysicsBody" instance=ExtResource( 1 )]
 scale = Vector2( 3, 3 )
-movement_speed = 140
+script = ExtResource( 5 )
+movement_speed = 200
+jump_speed = -150
 
 [node name="ExclamationMark" parent="." index="0"]
 position = Vector2( 0, -10 )
@@ -34,12 +38,25 @@ animation = "idle"
 position = Vector2( 0.5, 0 )
 scale = Vector2( 0.25, 0.4 )
 
-[node name="KillCollision" parent="KillArea" index="0"]
-position = Vector2( 0.25, 0 )
+[node name="HitCollision" parent="HitArea" index="0"]
+position = Vector2( 0.5, 0 )
 scale = Vector2( 0.3, 0.45 )
-
-[node name="FinderArea" parent="." index="4"]
-visible = true
 
 [node name="FinderCollision" parent="FinderArea" index="0"]
 scale = Vector2( 3, 3 )
+
+[node name="JumpArea" parent="." index="5"]
+visible = false
+
+[node name="JumpCollision" parent="JumpArea" index="0"]
+position = Vector2( 0.5, 0 )
+scale = Vector2( 0.7, 0.25 )
+
+[node name="DodgeArea" type="Area2D" parent="." index="6"]
+visible = false
+
+[node name="DodgeCollision" type="CollisionShape2D" parent="DodgeArea" index="0"]
+position = Vector2( 0.5, 0 )
+scale = Vector2( 1, 0.4 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="DodgeArea" to="." method="_on_projectile_entered"]
