@@ -21,10 +21,10 @@ func _process(delta):
 func _on_bullet_body_entered(body):
 	
 	if (shoot):
-		if body.is_a_parent_of(self):
+		if (body.is_a_parent_of(self)):
 			return;
 		else:
-			if (body.get_class() == ("TileMap")) or (body.get_name() == ("PlayerPhysicsBody")):
+			if (body.get_class() == "TileMap" or (body.get_name() == "PlayerPhysicsBody" or body.get_name() == "WarperBody")):
 				queue_free();
 			else:
 				body.queue_free();
