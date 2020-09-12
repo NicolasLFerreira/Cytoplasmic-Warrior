@@ -41,7 +41,7 @@ func _physics_process(delta):
 	
 	# Jump
 	
-	if (jump and is_on_floor()):
+	if (jump and is_on_floor() and $EnemyBodySprite.get_animation() == "moving"):
 		vector.y += jump_speed;
 
 # Called when player enters area
@@ -78,5 +78,5 @@ func _on_tileset_enter(body):
 	if (body.get_name() == "TileSet"):
 		jump = true;
 
-func _on_tileset_exited(body):
+func _on_tileset_exit(body):
 	jump = false;

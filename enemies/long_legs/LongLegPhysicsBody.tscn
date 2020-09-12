@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://enemies/base/EnemyBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://textures/enemies/long_leg/longleg_1.png" type="Texture" id=3]
-[ext_resource path="res://textures/enemies/long_leg/longleg_2.png" type="Texture" id=4]
-[ext_resource path="res://textures/enemies/long_leg/longleg_3.png" type="Texture" id=5]
+[ext_resource path="res://enemies/enemies/long_leg/longleg_1.png" type="Texture" id=3]
+[ext_resource path="res://enemies/enemies/long_leg/longleg_2.png" type="Texture" id=4]
+[ext_resource path="res://enemies/enemies/long_leg/longleg_3.png" type="Texture" id=5]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends \"res://enemies/base/EnemyBaseMovement.gd\"
@@ -37,6 +37,7 @@ animations = [ {
 scale = Vector2( 3, 3 )
 script = SubResource( 1 )
 movement_speed = 100
+jump_speed = -500
 
 [node name="ExclamationMark" parent="." index="0"]
 position = Vector2( 0, -12 )
@@ -49,12 +50,14 @@ playing = true
 [node name="EnemyBodyCollision" parent="." index="2"]
 scale = Vector2( 0.3, 0.6 )
 
-[node name="KillArea" parent="." index="3"]
+[node name="HitCollision" parent="HitArea" index="0"]
 scale = Vector2( 0.4, 0.7 )
 
-[node name="Timer" type="Timer" parent="." index="4"]
-wait_time = 2.0
+[node name="FinderArea" parent="." index="4"]
+visible = true
 
 [node name="FinderCollision" parent="FinderArea" index="0"]
 scale = Vector2( 7, 7 )
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[node name="JumpCollision" parent="JumpArea" index="0"]
+scale = Vector2( 1, 0.3 )
