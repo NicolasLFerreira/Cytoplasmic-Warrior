@@ -1,25 +1,26 @@
 extends Area2D
 
-export var speed = 400;
+export var speed = 500;
 var direction = 0;
-var isHorizontal = true;
+var horizontal = true;
 var flip = false;
 var shoot = true;
 
 func _ready():
+	$LifeSpan.start();
 	set_as_toplevel(true);
 
 func _process(delta):
-	if (isHorizontal):
+	if (horizontal):
 		position.x += direction * speed * delta;
 	else:
-		position.y += direction * speed * delta;
+		position.y += speed * delta;
+		rotation_degrees = 90;
 	$ProjectileSprite.flip_h = flip;
 
 func _on_bullet_body_entered(body):
 	
 	if (shoot):
-		print("shoot")
 		if body.is_a_parent_of(self):
 			return;
 		else:
@@ -27,6 +28,7 @@ func _on_bullet_body_entered(body):
 				queue_free();
 			else:
 				body.queue_free();
+				queue_free();
 
-func _on_view_camp_screen_exited():
+func _on_LifeSpan_timeout():
 	queue_free();

@@ -179,31 +179,37 @@ func stamina():
 
 func skill():
 	
-	# Dash
-	
-	if (Input.is_action_just_pressed("dash") and power >= 30):
-		vector.x = movement_speed * dash_factor;
-		power -= 30;
-	
-	# Air Jump
-	
-	if (Input.is_action_just_pressed("air_jump") and power >= 40 and !is_on_floor()):
-		vector.y = speed_jump;
-		power -= 40;
-	
-	# Dodge
-	
-	if (Input.is_action_just_pressed("dodge") and power >= 60):
-		$DodgeTimer.start();
-		if ($DodgeTimer.time_left != 0):
-			mortal = false;
-			$PlayerSprite.flip_v = true;
-		power -= 60
-	
-	# Spray
-	
-	if (key("spray")):
-		pass
+	if ($SkillTimer.time_left == 0):
+		
+		# Dash
+		
+		if (Input.is_action_just_pressed("dash") and power >= 30):
+			vector.x = movement_speed * dash_factor;
+			power -= 30;
+			$SkillTimer.start();
+		
+		# Air Jump
+		
+		if (Input.is_action_just_pressed("air_jump") and power >= 40 and !is_on_floor()):
+			vector.y = speed_jump;
+			power -= 40;
+			instance_projectile(false);
+			$SkillTimer.start();
+		
+		# Dodge
+		
+		if (Input.is_action_just_pressed("dodge") and power >= 60):
+			$DodgeTimer.start();
+			if ($DodgeTimer.time_left != 0):
+				mortal = false;
+				$PlayerSprite.flip_v = true;
+			power -= 60
+			$SkillTimer.start();
+		
+		# Spray
+		
+		if (key("spray")):
+			pass
 	
 	# Teleport
 	
@@ -231,15 +237,18 @@ func shoot():
 		power -= 10;
 		$ReloadProjectileTimer.start();
 		
-		var projectile_instance = projectile.instance();
-		
-		add_child(projectile_instance);
-		
-		projectile_instance.global_position = global_position;
-		projectile_instance.direction = -1 if $PlayerSprite.flip_h else 1;
-		projectile_instance.flip = true if $PlayerSprite.flip_h else false;
-		projectile_instance.isHorizontal = true;
+		instance_projectile(true);
 
+func instance_projectile(rotate):
+	
+	var projectile_instance = projectile.instance();
+	
+	add_child(projectile_instance);
+	
+	projectile_instance.global_position = global_position;
+	projectile_instance.direction = -1 if $PlayerSprite.flip_h else 1;
+	projectile_instance.flip = true if $PlayerSprite.flip_h else false;
+	projectile_instance.horizontal = rotate;
 
 # Death
 

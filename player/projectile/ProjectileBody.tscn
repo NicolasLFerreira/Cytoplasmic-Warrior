@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://player/projectile/ProjectileMovement.gd" type="Script" id=1]
-[ext_resource path="res://textures/player/projectile.png" type="Texture" id=2]
+[ext_resource path="res://player/textures/projectile.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -17,7 +17,8 @@ shape = SubResource( 1 )
 position = Vector2( -1, 1 )
 texture = ExtResource( 2 )
 
-[node name="Visibility" type="VisibilityNotifier2D" parent="."]
-rect = Rect2( -8, -4, 14, 8 )
+[node name="LifeSpan" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
 [connection signal="body_entered" from="." to="." method="_on_bullet_body_entered"]
-[connection signal="screen_exited" from="Visibility" to="." method="_on_view_camp_screen_exited"]
+[connection signal="timeout" from="LifeSpan" to="." method="_on_LifeSpan_timeout"]
