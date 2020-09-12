@@ -19,12 +19,12 @@ animations = [ {
 "name": "closed",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "opened",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 7 ) ],
 "loop": false,
 "name": "opening",
 "speed": 15.0
@@ -51,6 +51,7 @@ playing = true
 scale = Vector2( 7, 7 )
 
 [node name="AnimationCollision" type="CollisionShape2D" parent="AnimationArea"]
+scale = Vector2( 0.66, 0.66 )
 shape = SubResource( 3 )
 
 [node name="TeleportArea" type="Area2D" parent="."]

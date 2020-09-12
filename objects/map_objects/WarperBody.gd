@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 var player_in = false;
+var killable = false;
+export var teleport = "Warper";
 
 # Animation
 
@@ -24,5 +26,5 @@ func _on_opening_finished():
 
 func _on_player_entered(body):
 	if (body.get_name() == "PlayerBodyPhysics" and body.power == 100):
-		body.position = get_parent().get_node("Warper2").position + Vector2(0, -100);
+		body.position = get_parent().get_node(teleport).position + Vector2(0, -100);
 		body.power = 0;
