@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var player_in = false;
 var killable = false;
-export var teleport = "Warper";
+export var teleport = "WarperBody";
 
 # Animation
 
