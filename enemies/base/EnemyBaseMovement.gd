@@ -5,7 +5,11 @@ extends KinematicBody2D
 var vector = Vector2();
 var gravity = 10;
 var jump = false;
+
+# Combat
+
 var killable = true;
+var attack = true;
 
 # Movement
 
@@ -32,13 +36,29 @@ func _physics_process(delta):
 	
 	# Movement
 	
+	if (!obj.mortal):
+		attack = false;
+		print("Go back true")
+	else:
+		attack = true;
+	
 	if (inside):
-		if (obj.global_position.x - global_position.x > 0):
-			vector.x = max(vector.x-movement_speed, movement_speed * factor);
-			$EnemyBodySprite.flip_h = true;
-		else:
-			vector.x = min(vector.x+movement_speed, -movement_speed * factor);
-			$EnemyBodySprite.flip_h = false;
+		if (attack):
+			print("sim")
+			if (obj.global_position.x - global_position.x > 0):
+				vector.x = max(vector.x-movement_speed, movement_speed * factor);
+				$EnemyBodySprite.flip_h = true;
+			else:
+				vector.x = min(vector.x+movement_speed, -movement_speed * factor);
+				$EnemyBodySprite.flip_h = false;
+		if (!attack):
+			print("nao")
+			if (obj.global_position.x - global_position.x > 0):
+				vector.x = max(vector.x-movement_speed, movement_speed * -factor);
+				$EnemyBodySprite.flip_h = true;
+			else:
+				vector.x = min(vector.x+movement_speed, -movement_speed * -factor);
+				$EnemyBodySprite.flip_h = false;
 	
 	# Jump
 	
@@ -48,6 +68,9 @@ func _physics_process(delta):
 # Called when player enters area
 
 func _on_body_entered(body):
+	
+	# Start following
+	
 	if (body.get_name() == "PlayerBodyPhysics"):
 		
 		# Movement
@@ -61,7 +84,10 @@ func _on_body_entered(body):
 		$ExclamationMark.play("default");
 
 func _on_body_exited(body):
-	if (body.get_name() == "PlayerBodyPhysics"):
+	
+	# Stop following
+	
+	if (body.get_name() == obj.name):
 		
 		# Movement
 		
@@ -73,7 +99,8 @@ func _on_body_exited(body):
 		
 		$EnemyBodySprite.play("idle");
 		$ExclamationMark.play("default", true);
-		
+
+# Jump
 
 func _on_tileset_enter(body):
 	if (body.get_name() == "TileSet"):
