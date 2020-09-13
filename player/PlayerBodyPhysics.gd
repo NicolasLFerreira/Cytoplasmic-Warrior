@@ -42,6 +42,13 @@ var god_speed = 250;
 
 func _process(delta):
 	
+	# Stats fix
+	
+	if (stamina > stamina_cap):
+		stamina = stamina_cap;
+	if (power > power_cap):
+		power = power_cap;
+	
 	# Dev tools
 	
 	if (Input.is_action_just_pressed("G")):
@@ -269,7 +276,6 @@ func _on_enemy_exit(area):
 		die = false;
 
 func die():
-	#print(str(die))
 	if (die and mortal):
 		get_tree().reload_current_scene();
 

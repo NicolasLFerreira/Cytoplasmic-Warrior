@@ -41,23 +41,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stamina" parent="GUI" instance=ExtResource( 6 )]
+[node name="Stats" type="VBoxContainer" parent="GUI"]
+margin_left = 2.0
+margin_right = 498.0
+margin_bottom = 224.0
+rect_scale = Vector2( 0.2, 0.2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stamina" parent="GUI/Stats" instance=ExtResource( 6 )]
+margin_right = 496.0
+margin_bottom = 72.0
+rect_scale = Vector2( 1, 1 )
 custom_colors/font_color = Color( 0, 1, 0, 1 )
 text = "stamina: 100"
 
-[node name="Power" parent="GUI" instance=ExtResource( 6 )]
-margin_top = 15.0
-margin_right = 964.0
-margin_bottom = 339.0
-custom_colors/font_color = Color( 0.498039, 0, 1, 1 )
+[node name="Power" parent="GUI/Stats" instance=ExtResource( 6 )]
+margin_top = 76.0
+margin_right = 496.0
+margin_bottom = 148.0
+rect_scale = Vector2( 1, 1 )
+custom_colors/font_color = Color( 0.490196, 0, 0.490196, 1 )
 text = "power: 100"
+
+[node name="Projectile" parent="GUI/Stats" instance=ExtResource( 6 )]
+margin_top = 152.0
+margin_right = 496.0
+margin_bottom = 224.0
+rect_scale = Vector2( 1, 1 )
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "ready!"
 
 [node name="PlayerSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.3, 0 )
 scale = Vector2( 2.4, 2.5 )
 frames = SubResource( 1 )
 animation = "moving"
-frame = 1
 playing = true
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
@@ -80,12 +100,13 @@ shape = SubResource( 3 )
 wait_time = 0.2
 
 [node name="StaminaRegenTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.2
 
 [node name="PowerRegenTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="SkillTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="DodgeTimer" type="Timer" parent="."]
@@ -93,7 +114,7 @@ process_mode = 0
 one_shot = true
 
 [node name="ReloadProjectileTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 1.5
 one_shot = true
 [connection signal="area_entered" from="PlayerArea" to="." method="_on_enemy_enter"]
 [connection signal="area_exited" from="PlayerArea" to="." method="_on_enemy_exit"]
