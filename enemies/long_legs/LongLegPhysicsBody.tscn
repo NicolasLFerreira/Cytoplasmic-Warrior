@@ -36,8 +36,6 @@ animations = [ {
 [node name="LongLegPhysicsBody" instance=ExtResource( 1 )]
 scale = Vector2( 3, 3 )
 script = SubResource( 1 )
-movement_speed = 100
-jump_speed = -500
 
 [node name="ExclamationMark" parent="." index="0"]
 position = Vector2( 0, -12 )

@@ -18,7 +18,7 @@ var cooldown = false;
 # Find player
 
 var inside = false;
-onready var obj = get_parent().get_node("PlayerBodyPhysics");
+onready var obj = get_parent().get_parent().get_node("PlayerBodyPhysics");
 
 # Movement function
 

@@ -42,21 +42,20 @@ scale = Vector2( 0.25, 0.4 )
 position = Vector2( 0.5, 0 )
 scale = Vector2( 0.3, 0.45 )
 
+[node name="FinderArea" parent="." index="4"]
+visible = true
+
 [node name="FinderCollision" parent="FinderArea" index="0"]
 scale = Vector2( 3, 3 )
-
-[node name="JumpArea" parent="." index="5"]
-visible = false
 
 [node name="JumpCollision" parent="JumpArea" index="0"]
 position = Vector2( 0.5, 0 )
 scale = Vector2( 0.7, 0.25 )
 
 [node name="DodgeArea" type="Area2D" parent="." index="6"]
-visible = false
 
 [node name="DodgeCollision" type="CollisionShape2D" parent="DodgeArea" index="0"]
 position = Vector2( 0.5, 0 )
-scale = Vector2( 1, 0.4 )
+scale = Vector2( 2, 0.4 )
 shape = SubResource( 2 )
-[connection signal="body_entered" from="DodgeArea" to="." method="_on_projectile_entered"]
+[connection signal="area_entered" from="DodgeArea" to="." method="_on_projectile_entered"]
