@@ -57,20 +57,36 @@ func _process(delta):
 	
 	# God mode
 	
-	if (god_mode):
+	if (global_script.cheatmode):
 		
-		# Up down fly
+		# Teleport
 		
-		if (key("up")):
-			vector.y -= god_speed;
+		if (Input.is_action_just_pressed("teleport")):
+			self.position.x += movement_speed * dash_factor / 5;
 		
-		if (key("down")):
-			vector.y += god_speed;
+		# Full stats
 		
-		# Unlimited stuff
+		if (Input.is_action_just_pressed("full_stats")):
+			stamina = stamina_cap;
+			power = power_cap;
+			tired = false;
 		
-		power = power_cap;
-		stamina = stamina_cap;
+		# Godmode
+		
+		if (god_mode):
+			
+			# Up down fly
+			
+			if (key("up")):
+				vector.y -= god_speed;
+			
+			if (key("down")):
+				vector.y += god_speed;
+			
+			# Unlimited stuff
+			
+			power = power_cap;
+			stamina = stamina_cap;
 
 func _physics_process(_delta):
 	
@@ -217,18 +233,6 @@ func skill():
 		
 		if (key("spray")):
 			pass
-	
-	# Teleport
-	
-	if (Input.is_action_just_pressed("teleport")):
-		self.position.x += movement_speed * dash_factor / 5;
-	
-	# Power conversion
-	
-	if (Input.is_action_just_pressed("convert")):
-		stamina = power / 2;
-		tired = false;
-		power = 0;
 	
 	# Regen
 	
