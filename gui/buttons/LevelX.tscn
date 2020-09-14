@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gui/buttons/BaseButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gui/buttons/ChooseLevel.gd" type="Script" id=2]
+
+[node name="LevelX" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="ButtonText" parent="." index="0"]
+text = "level: x"
+[connection signal="pressed" from="." to="." method="_on_LevelX_pressed"]

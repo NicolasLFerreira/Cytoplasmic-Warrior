@@ -5,7 +5,7 @@
 [node name="BaseButton" type="Button"]
 margin_right = 500.0
 margin_bottom = 80.0
-rect_min_size = Vector2( 0, 80 )
+rect_min_size = Vector2( 1000, 80 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -14,4 +14,4 @@ __meta__ = {
 [node name="ButtonText" parent="." instance=ExtResource( 1 )]
 rect_scale = Vector2( 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "select level"
+text = "test message"
