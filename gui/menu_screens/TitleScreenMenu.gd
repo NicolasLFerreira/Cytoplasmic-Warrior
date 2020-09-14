@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_PlayButton_pressed():
-	pass
+	get_tree().change_scene("res://gui/menu_screens/LevelSelectionMenu.tscn")
 
 func _on_SettingsButton_pressed():
 	pass

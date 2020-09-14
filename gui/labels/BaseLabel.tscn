@@ -5,6 +5,7 @@
 [node name="SmallLabel" type="Label"]
 margin_right = 40.0
 margin_bottom = 14.0
+rect_min_size = Vector2( 100, 20 )
 rect_scale = Vector2( 0.2, 0.2 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 0, 1 )

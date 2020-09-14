@@ -18,14 +18,14 @@ __meta__ = {
 
 [node name="TopRow" type="HBoxContainer" parent="Menu"]
 margin_right = 1560.0
-margin_bottom = 418.0
-size_flags_vertical = 3
+margin_bottom = 250.0
+rect_min_size = Vector2( 0, 250 )
 
 [node name="BottomRow" type="HBoxContainer" parent="Menu"]
-margin_top = 422.0
+margin_top = 254.0
 margin_right = 1560.0
 margin_bottom = 840.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/BottomRow"]
-margin_bottom = 418.0
+margin_bottom = 586.0
