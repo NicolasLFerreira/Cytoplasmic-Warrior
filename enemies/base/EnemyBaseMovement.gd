@@ -38,13 +38,11 @@ func _physics_process(delta):
 	
 	if (!obj.mortal):
 		attack = false;
-		print("Go back true")
 	else:
 		attack = true;
 	
 	if (inside):
 		if (attack):
-			print("sim")
 			if (obj.global_position.x - global_position.x > 0):
 				vector.x = max(vector.x-movement_speed, movement_speed * factor);
 				$EnemyBodySprite.flip_h = true;
@@ -52,7 +50,6 @@ func _physics_process(delta):
 				vector.x = min(vector.x+movement_speed, -movement_speed * factor);
 				$EnemyBodySprite.flip_h = false;
 		if (!attack):
-			print("nao")
 			if (obj.global_position.x - global_position.x > 0):
 				vector.x = max(vector.x-movement_speed, movement_speed * -factor);
 				$EnemyBodySprite.flip_h = true;

@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://player/PlayerBodyPhysics.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/map_objects/GroundTileSet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/map_objects/DeadlyObjectsTileSet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://maps/MapBase.gd" type="Script" id=4]
 [ext_resource path="res://sfx/Music.wav" type="AudioStream" id=5]
+[ext_resource path="res://objects/map_objects/MiscTileSet.tscn" type="PackedScene" id=6]
 
 [node name="MapBase" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="MiscTileSet" parent="." instance=ExtResource( 6 )]
 
 [node name="TileSet" parent="." instance=ExtResource( 2 )]
 
