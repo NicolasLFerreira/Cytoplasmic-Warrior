@@ -28,7 +28,7 @@ position = Vector2( 0, -10 )
 
 [node name="Warpers" type="Node2D" parent="."]
 
-[node name="Musica" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 autoplay = true
 mix_target = 1
