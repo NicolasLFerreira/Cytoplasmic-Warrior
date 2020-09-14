@@ -2,10 +2,10 @@ extends Control
 
 func _process(delta):
 	
-	$Stats/Stamina.text = "Stamina: " + str(get_parent().stamina);
-	$Stats/Power.text = "Power: " + str(get_parent().power);
+	$Box/Stats/Stamina.text = "Stamina: " + str(get_parent().stamina);
+	$Box/Stats/Power.text = "Power: " + str(get_parent().power);
 	
 	if (get_parent().get_node("ReloadProjectileTimer").time_left == 0):
-		$Stats/Projectile.text = "Ready!";
+		$Box/Stats/Projectile.text = "Ready!";
 	else:
-		$Stats/Projectile.text = "Reloading";
+		$Box/Stats/Projectile.text = "Reloading";

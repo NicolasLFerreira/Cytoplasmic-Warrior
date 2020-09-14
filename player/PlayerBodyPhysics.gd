@@ -49,13 +49,7 @@ func _process(delta):
 	if (power > power_cap):
 		power = power_cap;
 	
-	# Dev tools
-	
-	if (Input.is_action_just_pressed("G")):
-		god_mode = !god_mode;
-		mortal = !mortal;
-	
-	# God mode
+	# Cheat and god mode
 	
 	if (global_script.cheatmode):
 		
@@ -72,6 +66,10 @@ func _process(delta):
 			tired = false;
 		
 		# Godmode
+		
+		if (Input.is_action_just_pressed("G")):
+			god_mode = !god_mode;
+			mortal = !mortal;
 		
 		if (god_mode):
 			
