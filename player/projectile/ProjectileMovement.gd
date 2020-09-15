@@ -27,6 +27,7 @@ func _on_bullet_body_entered(body):
 			if (body.get_class() == "TileMap" or (body.get_name() == "PlayerPhysicsBody" or !body.killable)):
 				queue_free();
 			else:
+				global_script.enemies -= 1;
 				body.queue_free();
 				queue_free();
 

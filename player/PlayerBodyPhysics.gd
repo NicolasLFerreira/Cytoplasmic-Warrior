@@ -4,6 +4,7 @@ extends KinematicBody2D
 
 const gravity = 5;
 var vector = Vector2(0, 1);
+var dash_vector = Vector2(0, 1);
 
 # Movement variables
 
@@ -26,11 +27,11 @@ const power_cap = 100;
 var power_regen = 10;
 var power = 100;
 
-const base_factor = 15;
-var dash_factor = 30;
+const base_factor = 75;
+var dash_factor = 0;
 const projectile = preload("res://player/projectile/ProjectileBody.tscn");
 
-# Death
+# Death and combat
 
 var mortal = true;
 var die = false;
@@ -56,7 +57,7 @@ func _process(delta):
 		# Teleport
 		
 		if (Input.is_action_just_pressed("teleport")):
-			self.position.x += movement_speed * dash_factor / 5;
+			self.position.x += movement_speed * dash_factor / 2;
 		
 		# Full stats
 		
@@ -98,6 +99,7 @@ func _physics_process(_delta):
 	
 	# Movement and ground definition
 	
+	dash_vector = move_and_slide(dash_vector, Vector2());
 	vector = move_and_slide(vector, Vector2(0, -1));
 	
 	# 'is_on_floor' conditions
@@ -117,6 +119,8 @@ func _physics_process(_delta):
 		vector.x = lerp(vector.x, 0, 0.03);
 	else:
 		vector.x = lerp(vector.x, 0, 0.3);
+	
+	dash_vector.x = lerp(dash_vector.x, 0, 0.3);
 	
 	# Walking animation
 	
@@ -200,12 +204,14 @@ func stamina():
 
 func skill():
 	
+	
+	
 	if ($SkillTimer.time_left == 0):
 		
 		# Dash
 		
 		if (Input.is_action_just_pressed("dash") and power >= 30):
-			vector.x = movement_speed * dash_factor;
+			dash_vector.x = movement_speed_base * dash_factor;
 			power -= 30;
 			$SkillTimer.start();
 		
