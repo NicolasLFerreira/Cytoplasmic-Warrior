@@ -6,7 +6,7 @@
 [ext_resource path="res://gui/labels/BaseLabel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/buttons/MusicButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/menu_screens/SettingsScreenMenu.gd" type="Script" id=6]
-[ext_resource path="res://gui/buttons/GodModeButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gui/buttons/CheatModeButton.tscn" type="PackedScene" id=7]
 
 [node name="SettingsMenu" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
@@ -16,29 +16,31 @@ margin_top = 89.0
 margin_right = 372.0
 margin_bottom = 161.0
 rect_scale = Vector2( 1, 1 )
+custom_colors/font_color = Color( 0.517647, 0.494118, 0.815686, 1 )
 text = "settings"
 
-[node name="Buttons" parent="Menu/BottomRow" index="0"]
+[node name="MiddleRow" parent="Menu" index="1"]
+margin_bottom = 756.0
+
+[node name="Buttons" parent="Menu/MiddleRow" index="0"]
+margin_right = 1000.0
+margin_bottom = 502.0
+
+[node name="FullscreenButton" parent="Menu/MiddleRow/Buttons" index="0" instance=ExtResource( 3 )]
 margin_right = 1000.0
 
-[node name="FullscreenButton" parent="Menu/BottomRow/Buttons" index="0" instance=ExtResource( 3 )]
-margin_right = 1000.0
-
-[node name="MusicButton" parent="Menu/BottomRow/Buttons" index="1" instance=ExtResource( 5 )]
+[node name="MusicButton" parent="Menu/MiddleRow/Buttons" index="1" instance=ExtResource( 5 )]
 margin_top = 84.0
 margin_right = 1000.0
 margin_bottom = 164.0
 
-[node name="GodModeButton" parent="Menu/BottomRow/Buttons" index="2" instance=ExtResource( 7 )]
+[node name="GodModeButton" parent="Menu/MiddleRow/Buttons" index="2" instance=ExtResource( 7 )]
 margin_top = 168.0
 margin_right = 1000.0
 margin_bottom = 248.0
 
-[node name="BackButton" parent="Menu/BottomRow/Buttons" index="3" instance=ExtResource( 2 )]
-margin_top = 252.0
-margin_right = 1000.0
-margin_bottom = 332.0
+[node name="BottomRow" parent="Menu" index="2"]
+margin_top = 760.0
+
+[node name="BackButton" parent="Menu/BottomRow" index="0" instance=ExtResource( 2 )]
 scene = "res://gui/menu_screens/TitleScreenMenu.tscn"
-[connection signal="pressed" from="Menu/BottomRow/Buttons/FullscreenButton" to="." method="_on_FullscreenButton_pressed"]
-[connection signal="pressed" from="Menu/BottomRow/Buttons/MusicButton" to="." method="_on_MusicButton_pressed"]
-[connection signal="pressed" from="Menu/BottomRow/Buttons/GodModeButton" to="." method="_on_GodModeButton_pressed"]

@@ -14,19 +14,21 @@ margin_top = 89.0
 margin_right = 1280.0
 margin_bottom = 161.0
 rect_scale = Vector2( 1, 1 )
+custom_colors/font_color = Color( 0.517647, 0.494118, 0.815686, 1 )
 text = "tutorial: skills and shooting"
 
-[node name="BottomRow" parent="Menu" index="1"]
+[node name="MiddleRow" parent="Menu" index="1"]
 margin_right = 1756.0
+margin_bottom = 756.0
 
-[node name="Buttons" parent="Menu/BottomRow" index="0"]
+[node name="Buttons" parent="Menu/MiddleRow" index="0"]
 margin_right = 1756.0
+margin_bottom = 502.0
 
-[node name="Tutorial" parent="Menu/BottomRow/Buttons" index="0" instance=ExtResource( 2 )]
+[node name="SmallLabel" parent="Menu/MiddleRow/Buttons" index="0" instance=ExtResource( 2 )]
 margin_right = 1756.0
 margin_bottom = 447.0
 rect_scale = Vector2( 1, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "* every skill shares cooldown
    except for shooting (own cooldown)
 -> dash: 'j' 30 power. dashes forward
@@ -34,8 +36,9 @@ text = "* every skill shares cooldown
 -> dodge: 'n' 60 power. escape death (1 sec)
 -> shooting: 'h' 10 power. kills enemies"
 
-[node name="BackButton" parent="Menu/BottomRow/Buttons" index="1" instance=ExtResource( 3 )]
-margin_top = 451.0
+[node name="BottomRow" parent="Menu" index="2"]
+margin_top = 760.0
 margin_right = 1756.0
-margin_bottom = 531.0
+
+[node name="BackButton" parent="Menu/BottomRow" index="0" instance=ExtResource( 3 )]
 scene = "res://gui/menu_screens/Tutorial1Menu.tscn"

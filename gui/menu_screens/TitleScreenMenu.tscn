@@ -25,39 +25,37 @@ stretch_mode = 5
 [node name="Title" parent="Menu/TopRow" index="1" instance=ExtResource( 6 )]
 margin_left = 204.0
 margin_top = 164.0
-margin_right = 1024.0
+margin_right = 1016.0
 margin_bottom = 236.0
 rect_scale = Vector2( 1, 1 )
-custom_colors/font_color = Color( 0.705882, 0, 0.705882, 1 )
-text = "   survival fighter"
+custom_colors/font_color = Color( 0.517647, 0.494118, 0.815686, 1 )
+text = "   insert name here"
 
-[node name="BottomRow" parent="Menu" index="1"]
+[node name="MiddleRow" parent="Menu" index="1"]
 margin_top = 404.0
 
-[node name="Buttons" parent="Menu/BottomRow" index="0"]
+[node name="Buttons" parent="Menu/MiddleRow" index="0"]
 margin_right = 1000.0
-margin_bottom = 436.0
+margin_bottom = 432.0
 
-[node name="PlayButton" parent="Menu/BottomRow/Buttons" index="0" instance=ExtResource( 2 )]
+[node name="PlayButton" parent="Menu/MiddleRow/Buttons" index="0" instance=ExtResource( 2 )]
 margin_right = 1000.0
 
-[node name="SettingsButton" parent="Menu/BottomRow/Buttons" index="1" instance=ExtResource( 3 )]
+[node name="SettingsButton" parent="Menu/MiddleRow/Buttons" index="1" instance=ExtResource( 3 )]
 margin_top = 84.0
 margin_right = 1000.0
 margin_bottom = 164.0
-rect_min_size = Vector2( 0, 80 )
 
-[node name="TutorialButton" parent="Menu/BottomRow/Buttons" index="2" instance=ExtResource( 4 )]
+[node name="TutorialButton" parent="Menu/MiddleRow/Buttons" index="2" instance=ExtResource( 4 )]
 margin_top = 168.0
 margin_right = 1000.0
 margin_bottom = 248.0
 
-[node name="QuitButton" parent="Menu/BottomRow/Buttons" index="3" instance=ExtResource( 5 )]
+[node name="QuitButton" parent="Menu/MiddleRow/Buttons" index="3" instance=ExtResource( 5 )]
 margin_top = 252.0
 margin_right = 1000.0
 margin_bottom = 332.0
-rect_min_size = Vector2( 0, 80 )
-[connection signal="pressed" from="Menu/BottomRow/Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="Menu/BottomRow/Buttons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
-[connection signal="pressed" from="Menu/BottomRow/Buttons/TutorialButton" to="." method="_on_TutorialButton_pressed"]
-[connection signal="pressed" from="Menu/BottomRow/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="Menu/MiddleRow/Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Menu/MiddleRow/Buttons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="Menu/MiddleRow/Buttons/TutorialButton" to="." method="_on_TutorialButton_pressed"]
+[connection signal="pressed" from="Menu/MiddleRow/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]

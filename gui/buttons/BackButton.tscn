@@ -4,9 +4,14 @@
 [ext_resource path="res://gui/buttons/BackButton.gd" type="Script" id=2]
 
 [node name="BackButton" instance=ExtResource( 1 )]
+margin_right = 310.0
+rect_min_size = Vector2( 310, 80 )
 script = ExtResource( 2 )
 
 [node name="ButtonText" parent="." index="0"]
-custom_colors/font_color = Color( 1, 1, 0, 1 )
+margin_top = -4.03052
+margin_right = 308.0
+margin_bottom = 67.9695
 text = "<- back"
+align = 1
 [connection signal="pressed" from="." to="." method="_on_BackButton_pressed"]

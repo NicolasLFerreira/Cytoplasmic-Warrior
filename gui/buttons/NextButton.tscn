@@ -7,6 +7,5 @@
 script = ExtResource( 2 )
 
 [node name="ButtonText" parent="." index="0"]
-custom_colors/font_color = Color( 1, 1, 0, 1 )
 text = "next ->"
 [connection signal="pressed" from="." to="." method="_on_NextTutorialButton_pressed"]

@@ -1,8 +1,20 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gui/screens/Background.png" type="Texture" id=1]
 
 [node name="MenuBase" type="Control"]
 margin_right = 1920.0
 margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 50, 50 )
+texture = ExtResource( 1 )
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -21,11 +33,16 @@ margin_right = 1560.0
 margin_bottom = 250.0
 rect_min_size = Vector2( 0, 250 )
 
-[node name="BottomRow" type="HBoxContainer" parent="Menu"]
+[node name="MiddleRow" type="HBoxContainer" parent="Menu"]
 margin_top = 254.0
 margin_right = 1560.0
-margin_bottom = 840.0
+margin_bottom = 836.0
 size_flags_vertical = 3
 
-[node name="Buttons" type="VBoxContainer" parent="Menu/BottomRow"]
-margin_bottom = 586.0
+[node name="Buttons" type="VBoxContainer" parent="Menu/MiddleRow"]
+margin_bottom = 582.0
+
+[node name="BottomRow" type="HBoxContainer" parent="Menu"]
+margin_top = 840.0
+margin_right = 1560.0
+margin_bottom = 840.0
