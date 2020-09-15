@@ -11,6 +11,9 @@
 [node name="SettingsMenu" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
 
+[node name="TopRow" parent="Menu" index="0"]
+margin_right = 1692.0
+
 [node name="Settings" parent="Menu/TopRow" index="0" instance=ExtResource( 4 )]
 margin_top = 89.0
 margin_right = 372.0
@@ -20,37 +23,39 @@ custom_colors/font_color = Color( 0.517647, 0.494118, 0.815686, 1 )
 text = "settings"
 
 [node name="MiddleRow" parent="Menu" index="1"]
+margin_right = 1692.0
 margin_bottom = 856.0
 
 [node name="Buttons" parent="Menu/MiddleRow" index="0"]
-margin_right = 1000.0
+margin_right = 1692.0
 margin_bottom = 602.0
 
 [node name="FullscreenButton" parent="Menu/MiddleRow/Buttons" index="0" instance=ExtResource( 3 )]
-margin_right = 1000.0
+margin_right = 1692.0
 
 [node name="MusicButton" parent="Menu/MiddleRow/Buttons" index="1" instance=ExtResource( 5 )]
 margin_top = 84.0
-margin_right = 1000.0
+margin_right = 1692.0
 margin_bottom = 164.0
 
 [node name="GodModeButton" parent="Menu/MiddleRow/Buttons" index="2" instance=ExtResource( 7 )]
 margin_top = 168.0
-margin_right = 1000.0
+margin_right = 1692.0
 margin_bottom = 248.0
 
-[node name="SmallLabel" parent="Menu/MiddleRow/Buttons" index="3" instance=ExtResource( 4 )]
+[node name="Description" parent="Menu/MiddleRow/Buttons" index="3" instance=ExtResource( 4 )]
 margin_top = 252.0
-margin_right = 1000.0
+margin_right = 1692.0
 margin_bottom = 549.0
 rect_scale = Vector2( 1, 1 )
 text = "for cheatmode only:
   - 'b' teleport
-  - 'g' godmode
+  - 'g' godmode ( use 'up' and 'down' keys )
   - 'l' restore stats"
 
 [node name="BottomRow" parent="Menu" index="2"]
 margin_top = 860.0
+margin_right = 1692.0
 
 [node name="BackButton" parent="Menu/BottomRow" index="0" instance=ExtResource( 2 )]
 scene = "res://gui/menu_screens/TitleScreenMenu.tscn"

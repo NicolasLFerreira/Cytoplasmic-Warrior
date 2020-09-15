@@ -3,6 +3,9 @@ extends Button
 export var level = 0;
 
 func _ready():
+	global_script.spawn_node = "Spawn";
+	global_script.killed_enemies = 0;
+	global_script.times_death = 0;
 	$ButtonText.text = "Level: " + str(level);
 
 func _on_LevelX_pressed():
