@@ -1,5 +1,32 @@
-[gd_scene format=2]
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://objects/textures/crystal/Crystal_3.png" type="Texture" id=1]
+[ext_resource path="res://objects/textures/crystal/Crystal_1.png" type="Texture" id=2]
+[ext_resource path="res://objects/textures/crystal/Crystal_2.png" type="Texture" id=3]
+[ext_resource path="res://objects/textures/crystal/Crystal_4.png" type="Texture" id=4]
+[ext_resource path="res://objects/map_objects/Crystal.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=1]
 
 [node name="CrystalArea" type="Area2D"]
+scale = Vector2( 7, 7 )
+script = ExtResource( 5 )
+
+[node name="CrystalSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+frame = 2
+playing = true
 
 [node name="CrystalCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, 1 )
+scale = Vector2( 0.35, 0.4 )
+shape = SubResource( 1 )
+[connection signal="body_entered" from="." to="." method="_on_CrystalArea_body_entered"]

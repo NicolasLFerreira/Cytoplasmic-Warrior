@@ -285,6 +285,7 @@ func _on_enemy_exit(area):
 
 func die():
 	if (die and mortal):
+		global_script.times_death += 1;
 		get_tree().reload_current_scene();
 
 # Timer functions

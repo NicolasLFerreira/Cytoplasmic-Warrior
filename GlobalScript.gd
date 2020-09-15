@@ -1,6 +1,14 @@
 extends Node
 
-var enemies = 1;
+# Game start
+
+var spawn_node = "Spawn";
 var cheatmode = false;
 var music = true;
-var spawn_node = "Spawn";
+
+# Ending stats
+
+var enemies = 0;
+var killed_enemies = 0;
+var times_death = 0;
+
