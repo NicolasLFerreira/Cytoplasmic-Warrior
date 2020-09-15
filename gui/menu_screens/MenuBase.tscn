@@ -23,7 +23,7 @@ __meta__ = {
 margin_left = 180.0
 margin_top = 120.0
 margin_right = 1740.0
-margin_bottom = 960.0
+margin_bottom = 1060.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -36,13 +36,13 @@ rect_min_size = Vector2( 0, 250 )
 [node name="MiddleRow" type="HBoxContainer" parent="Menu"]
 margin_top = 254.0
 margin_right = 1560.0
-margin_bottom = 836.0
+margin_bottom = 936.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/MiddleRow"]
-margin_bottom = 582.0
+margin_bottom = 682.0
 
 [node name="BottomRow" type="HBoxContainer" parent="Menu"]
-margin_top = 840.0
+margin_top = 940.0
 margin_right = 1560.0
-margin_bottom = 840.0
+margin_bottom = 940.0
