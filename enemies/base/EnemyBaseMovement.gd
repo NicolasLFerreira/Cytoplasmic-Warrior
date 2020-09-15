@@ -5,6 +5,7 @@ extends KinematicBody2D
 var vector = Vector2();
 var gravity = 10;
 var jump = false;
+var attack_jump = false;
 
 # Combat
 
@@ -59,7 +60,7 @@ func _physics_process(delta):
 	
 	# Jump
 	
-	if (jump and is_on_floor() and $EnemyBodySprite.get_animation() == "moving"):
+	if ((jump or attack_jump) and is_on_floor() and $EnemyBodySprite.get_animation() == "moving"):
 		vector.y += jump_speed;
 
 # Called when player enters area
@@ -79,6 +80,9 @@ func _on_body_entered(body):
 		
 		$EnemyBodySprite.play("moving");
 		$ExclamationMark.play("default");
+		
+		if (self.name == "BacteriaBodyPhysics" and is_on_floor()):
+			vector.y += jump_speed;
 
 func _on_body_exited(body):
 	
@@ -104,4 +108,5 @@ func _on_tileset_enter(body):
 		jump = true;
 
 func _on_tileset_exit(body):
-	jump = false;
+	if (body.get_name() == "TileSet"):
+		jump = false;

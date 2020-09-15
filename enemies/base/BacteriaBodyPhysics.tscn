@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://enemies/base/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemies/bacteria/Bacteria_2.png" type="Texture" id=2]
+[ext_resource path="res://enemies/base/BacteriaBodyPhysics.gd" type="Script" id=3]
+[ext_resource path="res://enemies/bacteria/Bacteria_1.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "moving",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[node name="BacteriaBodyPhysics" instance=ExtResource( 1 )]
+scale = Vector2( 1.5, 1.5 )
+script = ExtResource( 3 )
+movement_speed = 100
+jump_speed = -450
+
+[node name="ExclamationMark" parent="." index="0"]
+position = Vector2( 0, -8 )
+
+[node name="EnemyBodySprite" parent="." index="1"]
+frames = SubResource( 1 )
+animation = "moving"
+frame = 1
+
+[node name="EnemyBodyCollision" parent="." index="2"]
+position = Vector2( 0, 2 )
+scale = Vector2( 0.6, 0.4 )
+
+[node name="HitCollision" parent="HitArea" index="0"]
+position = Vector2( 0, 2 )
+scale = Vector2( 0.7, 0.5 )
+
+[node name="FinderArea" parent="." index="4"]
+scale = Vector2( 5, 5 )
+
+[node name="FinderCollision" parent="FinderArea" index="0"]
+position = Vector2( 0, 2 )
+scale = Vector2( 3, 3 )
+
+[node name="JumpCollision" parent="JumpArea" index="0"]
+position = Vector2( 0, 2 )
+scale = Vector2( 1.5, 0.3 )
+
+[node name="AttackJumpArea" type="Area2D" parent="." index="6"]
+
+[node name="AttackJumpCollision" type="CollisionShape2D" parent="AttackJumpArea" index="0"]
+position = Vector2( 1, -29 )
+scale = Vector2( 0.6, 3.5 )
+shape = SubResource( 2 )
+
+[node name="DodgeArea" type="Area2D" parent="." index="7"]
+
+[node name="DodgeCollision" type="CollisionShape2D" parent="DodgeArea" index="0"]
+position = Vector2( 0, 2 )
+scale = Vector2( 6, 0.6 )
+shape = SubResource( 3 )
+[connection signal="body_entered" from="AttackJumpArea" to="." method="_on_AttackJumpArea_body_entered"]
+[connection signal="body_exited" from="AttackJumpArea" to="." method="_on_AttackJumpArea_body_exited"]
+[connection signal="area_entered" from="DodgeArea" to="." method="_on_projectile_entered"]
