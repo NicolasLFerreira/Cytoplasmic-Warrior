@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://maps/MapBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gui/labels/BaseLabel.tscn" type="PackedScene" id=3]
@@ -8,7 +8,6 @@
 [ext_resource path="res://enemies/wanderer/WandererPhysicsBody.tscn" type="PackedScene" id=7]
 [ext_resource path="res://enemies/tsn-1/TSN-1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/map_objects/Checkpoint.tscn" type="PackedScene" id=9]
-[ext_resource path="res://objects/textures/oniichan.png" type="Texture" id=10]
 
 [node name="TutorialMap" instance=ExtResource( 1 )]
 
@@ -96,8 +95,8 @@ margin_left = 3876.43
 margin_top = -541.828
 margin_right = 5128.43
 margin_bottom = -394.828
-text = "this guy here is your friend,
-he serves as a checkpoint!"
+text = "this guy here serves as a checkpoint.
+consider him your friend!"
 
 [node name="Stalagmite" parent="Tutorial" index="8" instance=ExtResource( 3 )]
 margin_left = 4435.26
@@ -112,10 +111,9 @@ margin_left = 5143.46
 margin_top = -561.368
 margin_right = 7071.46
 margin_bottom = -264.368
-text = "first enemy! he will try
- \"hugging\" you, press 'h'
- to kill him, at the
- cost of 10 power!"
+text = "first infected! he will try getting you,
+so use 'h' at the cost of 10 power to \"cure\" 
+him, if you know what i'm talking about..."
 
 [node name="SmallLabel" parent="Tutorial" index="10" instance=ExtResource( 3 )]
 margin_left = 5853.32
@@ -127,21 +125,22 @@ press 'n' to dodge his attack,
 at the cost of 60 power!"
 
 [node name="LongLegs" parent="Tutorial" index="11" instance=ExtResource( 3 )]
-margin_left = 6968.98
-margin_top = -891.297
-margin_right = 8052.98
-margin_bottom = -669.297
-text = "oh, a \"long legs\"! those
-guys are known for being
-fast and jumping high!"
+margin_left = 6885.72
+margin_top = -881.849
+margin_right = 8957.72
+margin_bottom = -584.849
+text = "this infected one here also
+needs some \"cure\", but be
+careful, he is faster
+and jumps higher!"
 
 [node name="Nothing" parent="Tutorial" index="12" instance=ExtResource( 3 )]
 margin_left = 9286.83
 margin_top = -1179.3
 margin_right = 10250.8
 margin_bottom = -1107.3
-text = "oh sorry, nothing here...
-"
+text = "nothing good up there,
+better turn back..."
 
 [node name="Here" parent="Tutorial" index="13" instance=ExtResource( 3 )]
 margin_left = 9559.23
@@ -151,37 +150,36 @@ margin_bottom = -1486.81
 text = "I told ya..."
 
 [node name="Warper" parent="Tutorial" index="14" instance=ExtResource( 3 )]
-margin_left = 10597.7
-margin_top = -595.761
-margin_right = 12437.7
-margin_bottom = -373.761
-text = "don't worry, this guy won't try eating you,
-he will just absorb 100 power and send you
-somewhere else."
+margin_left = 10619.8
+margin_top = -583.009
+margin_right = 12519.8
+margin_bottom = -361.009
+text = "hmm, this guy seems to have a mutated virus,
+he only consumes 100 power and sends you
+somewhere else!"
 
 [node name="Wanderer" parent="Tutorial" index="15" instance=ExtResource( 3 )]
 margin_left = -1260.61
 margin_top = -380.227
 margin_right = 191.393
 margin_bottom = -83.2271
-text = "oh no, another weird creature!
-this guy here is called wanderer,
-he is pretty fast and also dodgy!
-"
+text = "well, this one seems to have gone
+even insanier than the other ones,
+help him by giving the \"cure\"!"
 
 [node name="Tsn-1" parent="Tutorial" index="16" instance=ExtResource( 3 )]
 margin_left = -3106.37
 margin_top = -337.665
 margin_right = -1662.37
 margin_bottom = -190.665
-text = "oh, this thing here was a mistake,
-it has nothing of special"
+text = "well, this one is pretty much done
+for, he still can be cured anyway."
 
 [node name="EndOfTutorial" parent="Tutorial" index="17" instance=ExtResource( 3 )]
 margin_left = -4173.36
-margin_top = -386.88
+margin_top = -388.061
 margin_right = 2622.64
-margin_bottom = -14.8797
+margin_bottom = -16.0606
 text = "well, congratulations! you got to the end of the 
 interactive tutorial. if you still have questions
  on how to play, just read the in-game written
@@ -268,4 +266,3 @@ teleport = "WarperBody3"
 [node name="bruh" type="Sprite" parent="." index="8"]
 position = Vector2( -5743.68, -893.177 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 10 )
